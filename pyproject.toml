@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rcez-docs-analyzer"
+version = "0.2.0"
+description = "Загрузка PDF и базовый парсер приказов 149 и 75"
+requires-python = ">=3.11"
+dependencies = ["pdfplumber>=0.11.7,<0.12", "openpyxl>=3.1.5,<4"]
+
+[project.optional-dependencies]
+ui = ["streamlit>=1.40,<2"]
+dev = ["reportlab>=4,<5", "coverage>=7.6,<8"]
+
+[project.scripts]
+docs-analyzer = "pipeline.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["pipeline*"]
+
+[tool.setuptools.package-data]
+pipeline = ["resources/*.json"]
